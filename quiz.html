@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardening Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: lightgreen;
+        }
+
+        #quiz-container {
+            max-width: auto;
+            margin: auto;
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #result-container {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+  <nav id="navbar"></nav>
+<div id="quiz-container">
+    <h2>Gardening Quiz</h2>
+    <p>Answer the following questions:</p>
+
+    <form id="quiz-form">
+        <label for="question1">1. What is the process of preparing soil for planting called?</label>
+        <select id="question1" name="question1">
+            <option value="none">Select an option</option>
+            <option value="tilling">Tilling</option>
+            <option value="watering">Watering</option>
+            <option value="harvesting">Harvesting</option>
+        </select>
+
+        <label for="question2"><br>2. Which of the following is a perennial plant?</label>
+       <br> <input type="radio" id="question2a" name="question2" value="rose">
+        <label for="question2a">Rose</label>
+        <input type="radio" id="question2b" name="question2" value="tomato">
+        <label for="question2b">Tomato</label>
+        <input type="radio" id="question2c" name="question2" value="lettuce">
+        <label for="question2c">Lettuce</label>
+
+        <button type="button" onclick="submitQuiz()">Submit</button>
+    </form>
+</div>
+
+<div id="result-container"></div>
+
+<script>
+    function submitQuiz() {
+        const answer1 = document.getElementById('question1').value;
+        const answer2 = document.querySelector('input[name="question2"]:checked') ? document.querySelector('input[name="question2"]:checked').value : '';
+
+        // Check answers and display result
+        let score = 0;
+
+        if (answer1 === 'tilling') {
+            score++;
+        }
+
+        if (answer2 === 'rose') {
+            score++;
+        }
+
+        const resultContainer = document.getElementById('result-container');
+        resultContainer.innerHTML = `<p>Your score: ${score}/2</p>`;
+    }
+
+</script>
+  <script src="script.js"></script> 
+</body>
+</html>

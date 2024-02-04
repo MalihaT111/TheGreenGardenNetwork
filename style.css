@@ -1,0 +1,56 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-image: url("farm.png");
+  background-size: cover;
+}
+
+nav {
+  background-color: rgba(33, 33, 33, 0.5);
+  overflow: hidden;
+}
+
+nav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: black;
+}
+
+.dropdown-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle:hover .dropdown-content {
+  display: grid;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+

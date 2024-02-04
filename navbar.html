@@ -1,0 +1,55 @@
+
+<nav id="navbar"> 
+</nav>
+<link href="style.css" rel="stylesheet" type="text/css" />
+  <script>
+    // navbar stuff
+    const navbarItems = [
+      {text: 'Home', link: 'index.html'},
+      {text: 'Quiz', link: 'quiz.html'},
+      {
+        text: 'Search',
+        submenu: [
+          {text: 'Search Map', link: 'maps.html'},
+          {text: 'Search Event', link: 'events.html'},
+          {text: 'Search Org', link: 'organs.html'}
+        ]
+      },
+      {text: 'Post Event', link: 'postevent.html'},
+      {text: 'Sign Up', link: 'signup.html'},
+      {text: 'Log In', link: 'login.html'}
+    ];
+
+    function createNavbar() {
+      const navbar = document.getElementById('navbar');
+
+      navbarItems.forEach(item => {
+        const link = document.createElement('a');
+        link.textContent = item.text;
+
+        if (item.submenu) {
+          link.classList.add('dropdown-toggle');
+
+          const dropdownContent = document.createElement('div');
+          dropdownContent.classList.add('dropdown-content');
+
+          item.submenu.forEach(subitem => {
+            const sublink = document.createElement('a');
+            sublink.textContent = subitem.text;
+            sublink.href = subitem.link;
+            dropdownContent.appendChild(sublink);
+          });
+
+          // Append dropdownContent to link
+          link.appendChild(dropdownContent);
+        } else {
+          link.href = item.link;
+        }
+
+        // Append link to navbar
+        navbar.appendChild(link);
+      });
+    }
+
+    createNavbar();
+  </script>
