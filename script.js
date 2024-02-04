@@ -104,7 +104,7 @@ const gardenLocations = [
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.7128, lng: -74.0060 },
-    zoom: 10
+    zoom: 9
   });
 
   gardenLocations.forEach(function(garden) {
@@ -113,7 +113,24 @@ function initMap() {
         map: map,
         title: garden.name
     });
-  }); // <- Add a closing parenthesis here
+  });
+
+  document.getElementById("search").addEventListener("input", function(event) {
+    const searchTerm = event.target.value.trim();
+    const filteredMarkers = gardenLocations.filter(function(garden) {
+      return garden.zip.toString().includes(searchTerm);
+    });
+    
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    
+    filteredMarkers.forEach(function(garden) {
+      markers.find(function(marker) {
+        return marker.getTitle() === garden.name;
+      }).setMap(map);
+    });
+  });
 }
 
 
